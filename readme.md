@@ -71,3 +71,5 @@ Superuser created successfully.
 2) 브라우저로 접근하기
 url http://localhost:9999 로 접근
    ![img_2.png](img_2.png)
+   
+## 2. 프로젝트(django_practices) 
