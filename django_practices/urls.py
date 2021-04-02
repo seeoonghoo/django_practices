@@ -1,5 +1,4 @@
 """django_practices URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
@@ -16,6 +15,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+import helloworld.views as helloworldviews
+
 urlpatterns = [
+    path('test/', helloworldviews.test),
+    path('hello1/', helloworldviews.hello1),
+    path('tags/', helloworldviews.tags),
     path('admin/', admin.site.urls),
 ]

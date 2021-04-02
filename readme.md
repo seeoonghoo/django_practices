@@ -72,4 +72,61 @@ Superuser created successfully.
 url http://localhost:9999 로 접근
    ![img_2.png](img_2.png)
    
+---------------------------------------------------------------------
+
 ## 2. 프로젝트(django_practices)에 Application 추가하기
+
+### 1. Application들의 통합 template 디렉토리 templates 만들기
+1) 디렉토리 생성
+django_practices
+|--- templates
+   
+2) template 디렉토리 설정 (settings.py)
+```python
+import os
+
+'DIRS': [os.path.join(BASE_DIR, 'templates')]
+#BASE_DIR 은 최상위 디렉토리, templates 는 디렉토리인데 join 저걸로 디렉토리를 함쳐줌
+ ```
+
+### 2. helloworld application 만들기
+1) application 생성
+```shellworld
+(venv) # python manage.py startapp helloworld
+```
+
+2) application 등록 (settings.py)
+```python
+INSTALLED_APPS = [
+    'helloworld',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
+
+3) application의 template 디렉토리 생성
+django_practices
+|--- templates
+    |--- helloworld
+   
+4) urls.py 에 URL 등록하고 views.py 에 요청 처리 
+   함수만들고 template(html) 연결하고..... (반복반복)
+   
+### 웹에 띄우기
+
+1. 뭐 만든다
+2. 올리고자 하는 application 에 있는 view.py 파일에 파일 걸어서 리턴해준다.
+3. 그걸 urls.py 에 등록해준다.
+4. 된다.
+
+- 참고
+    - 원하는 application의 view.py 파일에서
+    templates 디렉토리는 자동으로 인식이 되는 듯 하다. 
+    templates/test 가 아닌, test만 해도 인식이 됨.
+    여기서 함수를 만들어서 리턴 렌더 해서 해주면 된다.
+    - urls.py 에는 위에서 지정한 application의 view 파일을 임포트하고
+    거기서 view.py 에서 만들었던 함수를 호출해주면 거기에 맞는 링크와 함께 보여짐
