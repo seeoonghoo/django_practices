@@ -72,4 +72,4 @@ Superuser created successfully.
 url http://localhost:9999 로 접근
    ![img_2.png](img_2.png)
    
-## 2. 프로젝트(django_practices) 
+## 2. 프로젝트(django_practices)에 Application 추가하기
