@@ -130,3 +130,32 @@ django_practices
     여기서 함수를 만들어서 리턴 렌더 해서 해주면 된다.
     - urls.py 에는 위에서 지정한 application의 view 파일을 임포트하고
     거기서 view.py 에서 만들었던 함수를 호출해주면 거기에 맞는 링크와 함께 보여짐
+      
+### 2. emaillist application 만들기
+1) application 생성
+```shellworld
+(venv) # python manage.py startapp emaillist01
+```
+
+2) application 등록 (settings.py)
+```python
+INSTALLED_APPS = [
+    'emaillist01'
+    'helloworld',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
+
+3) application의 template 디렉토리 생성
+django_practices
+|--- templates
+    |--- helloworld 
+    |--- emaillist01
+   
+4) urls.py 에 URL 등록하고 views.py 에 요청 처리 
+   함수만들고 template(html) 연결하고..... (반복반복)
