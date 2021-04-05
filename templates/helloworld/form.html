@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form test</title>
+</head>
+<body>
+    <h1>회원 가입</h1> <!-- 아래 뭐 이상한거 단거는 장고가 post 방식일 때 주작 안되게 알아서 처리를 해주게 해줌, 보안 때문 -->
+    <form action ="/join" method="post">{% csrf_token %}
+        <!-- 이러면 /join(url)로 들어감,  /join을 url로 정해서 가는것 -->
+        이메일 : <input type="text" name = "email" value="" /> <!-- 태그 단위라서 떨어뜨려놔도 의미가 없음, 여기에 value하면 기본값을 인풋에 띄움 -->
+        <!-- name은 이 인풋의 이름을 생성해줌 -->
+        <br>
+        비밀번호 : <input type ="password" name = "password" value="">
+        <br>
+        성별 : <input type ="radio" name="gender" value="male"> 남 <input type = "radio" name = "gender" value="female"> 여
+        <!-- 이케 성별 선택하는거. name을 같게 해야 저렇게 되고 다르게 하면 안댐 -->
+        <br>
+        취미 :
+        <input type="checkbox" name = "hobbies" value="swimming"> 수영
+        <input type="checkbox" name = "hobbies" value="coding"> 코딩
+        <input type="checkbox" name = "hobbies" value="reading"> 독서
+        <input type="checkbox" name = "hobbies" value="cooking"> 요리
+        <br>
+
+        자기소개 : <br>
+        <textarea name = "desc" style="width:200px; height:100px"></textarea>
+        <br>
+
+        <input type = "submit" value = "가입"/> <!-- 이렇게 요청이 들어가면 데이터가 넘어가면서
+        폼에 있는 action 에 해당하는 짓거리를 함 -->
+        <!-- 이런식으로 요청, 응답 이런 구조를 잘 알아둬야 함 -->
+    </form> <!-- 이렇게 되는걸 블럭태그-->
+    <!-- 이렇게 하는건 get 방식으로 보냄. url로 보내는데 많은 데이터를 보낼 수 없음. 그리고 정보가 다 보임
+    post 방식은 바디로 붙여서 보냄, get은 카톡에 저장해 놨음 근야 post 쓴걸 get으로 바꿔주면 됨 -->
+    <a href="/">main으로 가기</a>
+</body>
+
+</html>

@@ -18,7 +18,9 @@ from django.urls import path
 import helloworld.views as helloworldviews
 
 urlpatterns = [
-    path('test/', helloworldviews.test),
+    path('', helloworldviews.main), # '' 로 해놓으면 메인임
+    path('join', helloworldviews.join),  #post 할 때는 뒤에 / 를 빼야함
+    path('form/', helloworldviews.form),
     path('hello1/', helloworldviews.hello1),
     path('tags/', helloworldviews.tags),
     path('admin/', admin.site.urls),
