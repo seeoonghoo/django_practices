@@ -4,7 +4,7 @@ from guestbook01.models import findall, insert, deleteby_no_and_password
 def test_findall():
     results = findall()
     for result in results:
-        print(f'{result["no"]}:{result["name"]}:{result["reg_date"]}:result["message"]')
+        print(f'{result["no"]}:{result["name"]}:{result["reg_date"]}:{result["message"]}')
 
 
 def test_insert():

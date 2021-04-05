@@ -4,14 +4,15 @@
 <title>방명록</title>
 </head>
 <body>
-	<form method="post" action="">
-	<input type='hidden' name="id" value="">
+	<form method="post" action="/guestbook01/delete"> <!-- get방식으로 온걸 여기서 렌더링으로 받아서 번호 10번인걸 넘겨줘야함 -->
+		{% csrf_token %}
+		<input type='hidden' name="no" value={{ no }}> <!-- 여기에다가 값을 쳐박아야함 -->
 	<table>
 		<tr>
 			<td>비밀번호</td>
-			<td><input type="password" name="password"></td>
+			<td><input type="password" name="password"></td> <!-- 그리고 위에 쳐박아놓은 no랑 입력받는 password 해서 delete 함수에 쳐박아야함 -->
 			<td><input type="submit" value="확인"></td>
-			<td><a href="">메인으로 돌아가기</a></td>
+			<td><a href="/guestbook01">메인으로 돌아가기</a></td>
 		</tr>
 	</table>
 	</form>

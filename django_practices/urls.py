@@ -31,6 +31,9 @@ urlpatterns = [
     path('emaillist01/add', emaillist01views.add),
 
     path('guestbook01/', guestbook01views.index),
+    path('guestbook01/add', guestbook01views.add),
+    path('guestbook01/deleteform', guestbook01views.deleteform),
+    path('guestbook01/delete', guestbook01views.delete),
 
     path('admin/', admin.site.urls),
 ]
