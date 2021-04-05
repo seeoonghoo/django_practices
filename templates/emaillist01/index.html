@@ -7,23 +7,26 @@
 	<h1>메일 리스트에 가입되었습니다.</h1>
 	<p>입력한 정보 내역입니다.</p>
 	<!-- 메일정보 리스트 -->
+
+	{% for emaillist in emaillist_list %} <!-- views에서 data로 보냈는데, 그 안에 이름을 emaillist_list로 지정해서 보낸거 말하는 것 -->
 	<table border="1" cellpadding="5" cellspacing="2">
 		<tr>
 			<td align=right>First name: </td>
-			<td>안</td>
+			<td>{{ emaillist.first_name }}</td> <!-- 값을 찍을 땐 이렇게 해야함, .하고 컬럼이름, 그리고 파이썬 코드처럼 적는게 아님 -->
 		</tr>
 		<tr>
 			<td align=right width="110">Last name: </td>
-			<td width="110">대혁</td>
+			<td width="110">{{ emaillist.last_name }}</td>
 		</tr>
 		<tr>
 			<td align=right>Email address: </td>
-			<td>kickscar@gmail.com</td>
+			<td>{{ emaillist.email }}</td> <!-- emaillist 이건 약간 객체 느낌. 뒤에껀 이제 컬럼이름으로 -->
 		</tr>
 	</table>
 	<br>
+	{% endfor %} <!-- 위에꺼와 함께 for문을 만들어줌, 구문이 끝날 때 꼭 endfor 저렇게 해줘야함 -->
 	<p>
-		추가메일 등록
+		<a href = "/emaillist01/form">추가메일 등록</a>
 	</p>
 	<br>
 </body>
