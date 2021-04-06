@@ -22,6 +22,9 @@ def add(request):
     return HttpResponseRedirect("/guestbook01/")
 
 def deleteform(request):
+    
+    # 아니면 그냥 리턴만 떄려버리고 deleteform.html 에서 {{ no }} 여기에
+    # {{ request.GET.no }} 이렇게 바로 해도 가능
 
     results = request.GET["no"]
     data = {"no" : results}

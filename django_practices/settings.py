@@ -28,9 +28,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'guestbook02',
+    'emaillist02',
     'guestbook01',
     'emaillist01',
     'helloworld',
+    'mathfilters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

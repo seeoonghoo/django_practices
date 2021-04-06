@@ -131,7 +131,7 @@ django_practices
     - urls.py 에는 위에서 지정한 application의 view 파일을 임포트하고
     거기서 view.py 에서 만들었던 함수를 호출해주면 거기에 맞는 링크와 함께 보여짐
       
-### 3. emaillist application 만들기
+### 3. emaillist01 application 만들기
 1) application 생성
 ```shellworld
 (venv) # python manage.py startapp emaillist01
@@ -188,4 +188,136 @@ django_practices
     |--- emaillist01
     |--- guestbook01   
 4) urls.py 에 URL 등록하고 views.py 에 요청 처리 
+   함수만들고 template(html) 연결하고..... (반복반복)
+   
+5) template filter 사용
+ㅍlinebreaksbr : 'aaa\nbbb' --|--> 'aaa&lt;br&gt;bbb' 이렇게 |(필터) 안에 들어가면 
+   오른쪽처럼 나옴
+   문자열 | linebreaksbr 이렇게 사용. 그럼 이제 \n을 br로 바꿔서 넣어줌
+   
+- mathfilters 
+  1. 설치
+    ```shell
+    (venv) # pip install django-mathfilters
+    ```
+  2. 설정
+    INSTALLED_APPS 에 추가
+    ```python
+    INSTALLED_APPS = [
+        'guestbook01',
+        'emaillist01',
+        'helloworld',
+        'mathfilters', ..... ] 
+    ```
+  3. 사용
+    ```html
+    {% load mathfilters %}
+    <p>
+        10 - 5 + 1 = {{ 10 | sub:5 | add:1 }}
+    </p>
+    ```
+    
+{{ forloop.counter }} <!-- 내장함수. for문 도는동안 카운트 해주는거인듯 -->
+{{ guestbooklist | length }} <!-- 이건 길이 구하는 함수, 저거 구하는거의 길이가 나옴 -->
+
+컨트롤 클릭 으로 메소드 누르면 거기 있는 곳으로 바로 날아감
+
+
+### 5. emaillist02 application 만들기 (ORM 적용)
+1) application 생성
+```shellworld
+(venv) # python manage.py startapp emaillist02
+```
+
+2) application 등록 (settings.py)
+```python
+INSTALLED_APPS = [
+    'emaillist02',
+    'emaillist01',
+    'helloworld',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
+
+3) application의 template 디렉토리 생성
+django_practices
+|--- templates
+    |--- helloworld 
+    |--- emaillist01
+    |--- emaillist02
+ 
+4) Model class 정의하고 테이블 생성
+이걸 만들어야 테이블로 매핑이 된다
+   ```python
+    class Emaillist(models.Model): #테이블이름으로
+        first_name = models.CharField(max_length = 45)
+        last_name = models.CharField(max_length = 45)
+        email = models.CharField(max_length = 200) # 테이블의 컬럼을 따라서 해줌
+
+        def __str__(self):
+            return f'Emaillist({self.first_name}, {self.last_name}, {self.email})'
+    ```
+    ```shell
+    (venv) = # python manage.py makemigrations
+    (venv) = # python manage.py migrate 
+    ```
+   makemigration 변경된 것을 db에 옮긴다
+   이렇게 하면 emaillist02_emaillist 라는 이름의 테이블이 만들어진다
+5) urls.py 에 URL 등록하고 views.py 에 요청 처리 
+   함수만들고 template(html) 연결하고..... (반복반복)
+   
+
+### 6. guestbook02 application 만들기 (ORM 적용)
+1) application 생성
+```shellworld
+(venv) # python manage.py startapp guestbook02
+```
+
+2) application 등록 (settings.py)
+```python
+INSTALLED_APPS = [
+    'guestbook01',
+    'guestbook02',
+    'emaillist02',
+    'emaillist01',
+    'helloworld',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
+
+3) application의 template 디렉토리 생성
+django_practices
+|--- templates
+    |--- helloworld 
+    |--- guestbook01
+    |--- guestbook02
+ 
+4) Model class 정의하고 테이블 생성
+이걸 만들어야 테이블로 매핑이 된다
+   ```python
+    class Emaillist(models.Model): #테이블이름으로
+        first_name = models.CharField(max_length = 45)
+        last_name = models.CharField(max_length = 45)
+        email = models.CharField(max_length = 200) # 테이블의 컬럼을 따라서 해줌
+
+        def __str__(self):
+            return f'Emaillist({self.first_name}, {self.last_name}, {self.email})'
+    ```
+    ```shell
+    (venv) = # python manage.py makemigrations
+    (venv) = # python manage.py migrate 
+    ```
+   makemigration 변경된 것을 db에 옮긴다
+   이렇게 하면 emaillist02_emaillist 라는 이름의 테이블이 만들어진다
+5) urls.py 에 URL 등록하고 views.py 에 요청 처리 
    함수만들고 template(html) 연결하고..... (반복반복)
